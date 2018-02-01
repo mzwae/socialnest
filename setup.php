@@ -7,7 +7,7 @@
 <h3>Setting up...</h3>
 <?php
 
-require_once 'functions.php'
+require_once 'functions.php';
 
 createTable('members',
             'user VARCHAR(16),
