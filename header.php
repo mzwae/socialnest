@@ -1,6 +1,8 @@
 <?php
-
+// ini_set('session.gc_maxlifetime', 60 * 60 * 24);
 session_start();
+echo date("l F jS, Y - g:ia", time());
+
 echo "<!DOCTYPE html>\n<html><head>";
 require_once 'functions.php';
 $userstr = ' (Guest)';
@@ -17,8 +19,7 @@ echo "<title>$appname$userstr</title><link rel='stylesheet' " .
 "href='styles.css' type='text/css'>" .
 "</head><body><center><canvas id='logo' width='624' " .
 "height='96'>$appname</canvas></center>" .
-"<div class='appname'>$appname$userstr</div>" .
-"<script src='javascript.js'></script>";
+"<div class='appname'>$appname$userstr</div>";
 
 if ($loggedin) {
     echo "<br ><ul class='menu'>" .

@@ -4,14 +4,18 @@ require_once 'header.php';
 
 echo <<<_END
 
-<script src="signup.js" type="text/javascript"></script>
+<script src="signup.js"></script>
 <div class='main'><h3>Please enter your details to sign up</h3>
 _END;
 
 $error = $user = $pass = "";
 if (isset($_SESSION['user'])) {
-    $user = sanitizeString($_SESSION['user']);
-    $pass = sanitizeString($_SESSION['pass']);
+destroySession();
+}
+
+if(isset($_POST['user'])){
+    $user = sanitizeString($_POST['user']);
+    $pass = sanitizeString($_POST['pass']);
 
     if ($user == "" || $pass == "") {
         $error = "Not all fields were entered<br><br>";
