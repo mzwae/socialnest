@@ -3,7 +3,7 @@
 require_once 'header.php';
 
 echo <<<_END
-
+<script src="jquery-1.11.1.min.js"></script>
 <script src="signup.js"></script>
 <div class='main'><h3>Please enter your details to sign up</h3>
 _END;
