@@ -30,7 +30,13 @@ if (isset($_POST['text'])) {
 
 $text = stripslashes(preg_replace('/\s\s+/', ' ', $text));
 
-if (isset($_FILES['image']['name'])) {
+if (isset($_FILES['image'])) {
+  // print_r($_FILES);
+  // $files = $_FILES['image']['name'];
+  echo "User image found!<br><br>";
+
+  // return;
+  // echo "file uploaded is : " . "$files";
     $saveto = "$user.jpg";
     move_uploaded_file($_FILES['image']['tmp_name'], $saveto);
     $typeof = true;
@@ -67,23 +73,27 @@ if (isset($_FILES['image']['name'])) {
         imagedestroy($tmp);
         imagedestroy($src);
     }
+} else {
+
+  echo "No user image found!<br><br>";
+  // echo "file uploaded is : " . "$files";
 }
 
 showProfile($user);
 
 echo <<<_END
 
-<form method='post' action='profile.php' enctype='multipart/from-data'>
+<form method='POST' action='profile.php' enctype='multipart/from-data'>
 <h3>Enter or edit your details and/or upload an image</h3>
 <textarea name='text' cols='50' rows='3'>$text</textarea><br>
 
+
 _END;
 
+
  ?>
-
-
- Image: <input type='file' name='image' size='14'>
- <input type='submit' value='Save Profile'>
-</form></div><br>
-</body>
-</html>
+ Image: <input type="file" name="image" size="14">
+ <input type="submit" value="Save Profile">
+ </form></div><br>
+ </body>
+ </html>

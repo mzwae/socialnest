@@ -57,7 +57,7 @@ function showProfile($user)
         echo "<img src='$user.jpg' style='float:left;'>";
     }
 
-    $result = queryMysql("SELECT * FROM profiles WHERE user='user'");
+    $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
 
     if ($result->num_rows) {
         $row = $result->fetch_array(MYSQLI_ASSOC);
