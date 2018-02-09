@@ -19,7 +19,7 @@ if (isset($_GET['view'])) {
 
     echo "<h3>$name Profile</h3>";
     showProfile($view);
-    echo "<a class='button' href='messages.php?view=$view'" . "View $name messages</a><br><br>";
+    echo "<a class='button' href='messages.php?view=$view'>" . "View $name messages</a><br><br>";
     die("</div></body></html>");
 }
 
@@ -30,10 +30,11 @@ if (isset($_GET['add'])) {
 
     if (!$result->num_rows) {
         queryMysql("INSERT INTO friends VALUES ('$add', '$user')");
-    } elseif (isset($_GET['remove'])) {
-        $remove = sanitizeString($_GET['remove']);
-        queryMysql("DELETE FROM friends WHERE user='$remove' AND friend='$user'");
     }
+} elseif (isset($_GET['remove'])) {
+    $remove = sanitizeString($_GET['remove']);
+    queryMysql("DELETE FROM friends WHERE user='$remove' AND friend='$user'");
+}
 
     $result = queryMysql("SELECT user FROM members ORDER BY user");
     $num = $result->num_rows;
@@ -70,7 +71,7 @@ if (isset($_GET['add'])) {
             echo " [<a href='members.php?remove" . $row['user'] . "'>drop</a>]";
         }
     }
-}
+
  ?>
 
 </ul></div>

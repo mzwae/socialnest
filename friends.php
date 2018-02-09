@@ -31,7 +31,7 @@ $following = array();
 $result = queryMysql("SELECT * FROM friends WHERE user='$view'");
 $num = $result->num_rows;
 
-for ($i=0; $i < $num; ++$i) {
+for ($j=0; $j < $num; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
     $following[$j] = $row['user'];
 }
